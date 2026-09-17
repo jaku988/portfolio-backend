@@ -27,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['api.jankulak.me', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -123,7 +123,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = ['https://jankulak.me',
+                        'http://jankulak.me',
+]
 
 MAILERS = {
     "default" : {
@@ -131,8 +133,6 @@ MAILERS = {
         "OPTIONS" : {
             "host" : "smtp.gmail.com",
             "port" : 465,
-            "use_tls" : True,
-            "use_tls" : False,
             "use_ssl" : True,
             "username" : os.getenv("EMAIL_USER"),
             "password" : os.getenv("EMAIL_PASS"),
